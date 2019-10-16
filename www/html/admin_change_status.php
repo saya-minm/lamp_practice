@@ -1,6 +1,9 @@
 <?php
+//定義した情報を読み込み
 require_once '../conf/const.php';
+//ユーザー定義関数を読み込み
 require_once MODEL_PATH . 'functions.php';
+
 require_once MODEL_PATH . 'user.php';
 require_once MODEL_PATH . 'item.php';
 
