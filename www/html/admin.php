@@ -18,7 +18,7 @@ if(is_logined() === false){
   redirect_to(LOGIN_URL);
 }
 
-//変数db=ユーザー定義関数get_db_connect(db.php))
+//変数db=ユーザー定義関数get_db_connect(db.php)
 $db = get_db_connect();
 
 //変数user=ユーザー定義関数get_login_user(user.php)
