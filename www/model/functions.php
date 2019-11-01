@@ -1,5 +1,9 @@
 <?php
 
+function h($value){
+  return htmlspecialchars($value,ENT_QUOTES,'utf-8');
+}
+
 function dd($var){
   var_dump($var);
   exit();
@@ -8,6 +12,28 @@ function dd($var){
 function redirect_to($url){
   header('Location: ' . $url);
   exit;
+}
+
+function get_csrf_token(){
+  // random_string()はユーザー定義関数。
+  $token = random_string(48);
+  // set_session()はユーザー定義関数。
+  set_session('csrf_token', $token);
+  return $token;
+}
+
+function random_string($token){
+  $bytes = openssl_random_pseudo_bytes($token);
+  return bin2hex($bytes);
+}
+
+// トークンのチェック
+function is_valid_csrf_token($token){
+  if($token === '') {
+    return false;
+  }
+  // get_session()はユーザー定義関数
+  return $token === get_session('csrf_token');
 }
 
 function get_get($name){
