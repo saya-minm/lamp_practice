@@ -5,9 +5,8 @@ require_once 'db.php';
 function insert_purchase($db, $user, $carts){
 
     $total = 0;
-
     foreach($carts as $value){
-        $total = $value['items.price'] * $value['carts.amount'] + $total;
+        $total = $value['price'] * $value['amount'] + $total;
     }
 
     $sql="
@@ -19,9 +18,10 @@ function insert_purchase($db, $user, $carts){
     VALUES(:user_id, :total)
     ";
     $params = array(
-        ":user_id" => $user,
+        ":user_id" => $user['user_id'],
         ":total" => $total
     );
+    
     return execute_query($db, $sql, $params);
 }
 

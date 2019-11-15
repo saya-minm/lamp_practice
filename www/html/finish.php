@@ -32,6 +32,14 @@ if(purchase_carts($db, $carts) === false){
   redirect_to(CART_URL);
 } 
 
+$id = $db->lastInsertId();
+
+if(insert_purchase_details($db, $carts, $id) === false){
+  $db->rollback();
+  set_error('商品が購入できませんでした。');
+  redirect_to(CART_URL);
+}
+
 $db->commit();
 
 $total_price = sum_carts($carts);
