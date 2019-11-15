@@ -16,6 +16,7 @@ function get_db_connect(){
   return $dbh;
 }
 
+//SQL文の実行準備・実行・レコードの取得を行う関数
 function fetch_query($db, $sql, $params = array()){
   try{
     $statement = $db->prepare($sql);
@@ -27,6 +28,7 @@ function fetch_query($db, $sql, $params = array()){
   return false;
 }
 
+//SQL文の実行準備・実行・レコードの取得を行う関数
 function fetch_all_query($db, $sql, $params = array()){
   try{
     $statement = $db->prepare($sql);
@@ -38,6 +40,7 @@ function fetch_all_query($db, $sql, $params = array()){
   return false;
 }
 
+//SQL文の実行準備・実行・レコードの取得を行う関数
 function execute_query($db, $sql, $params = array()){
   try{
     $statement = $db->prepare($sql);
