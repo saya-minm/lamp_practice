@@ -18,7 +18,16 @@ if(is_logined() === false){
   redirect_to(LOGIN_URL);
 }
 
+
 //変数db=ユーザー定義関数get_db_connect(db.php)
+
+if(is_valid_csrf_token(get_post('csrf_token')) === false){
+  redirect_to(LOGIN_URL);
+}
+
+unset($_SESSION['csrf_token']);
+
+
 $db = get_db_connect();
 
 //変数user=ユーザー定義関数get_login_user(user.php)
@@ -35,7 +44,7 @@ if(is_admin($user) === false){
 $item_id = get_post('item_id');
 //変数changes_to=ユーザー定義関数get_post
 $changes_to = get_post('changes_to');
-
+　
 //変数changes_toが'open'(公開)であれば
 if($changes_to === 'open'){
   update_item_status($db, $item_id, ITEM_STATUS_OPEN);
