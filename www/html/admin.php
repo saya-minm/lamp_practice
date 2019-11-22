@@ -34,5 +34,10 @@ if(is_admin($user) === false){
 //変数items=(ユーザー定義関数get_all_items)
 $items = get_all_items($db);
 
+
 //商品管理ページ読み込み
+
+$token = get_csrf_token();
+
+
 include_once '../view/admin_view.php';

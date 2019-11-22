@@ -17,5 +17,6 @@ $items = get_open_items($db);
 
 $new = array('新着順','価格の安い順','価格の高い順');
 
+$token = get_csrf_token();
 
 include_once '../view/index_view.php';
