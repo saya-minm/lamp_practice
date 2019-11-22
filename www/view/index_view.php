@@ -18,6 +18,15 @@
     <h1>商品一覧</h1>
     <?php include VIEW_PATH . 'templates/messages.php'; ?>
 
+    <form action="sort.php" method="post" class="seach">
+      <select name="sort">
+      <?php foreach($new as $key=>$value) { ?>
+        <option value="<?php print $key; ?>" <?php if($key === $keys) print 'selected'; ?>><?php print $value; ?></option>
+      <?php } ?>
+      </select>
+        <input type="submit" value="検索">
+    </form>
+
     <div class="card-deck">
       <div class="row">
       <?php foreach($items as $item){ ?>
